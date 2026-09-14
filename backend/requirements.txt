@@ -6,3 +6,4 @@ opencv-python
 numpy
 gTTS
 SpeechRecognition
+tensorflow
