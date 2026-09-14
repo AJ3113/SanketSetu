@@ -1,0 +1,38 @@
+{
+  "feature_dim": 126,
+  "input_shape": [
+    126
+  ],
+  "landmarks_per_hand": 21,
+  "coords_per_landmark": 3,
+  "num_hands": 2,
+  "hand_ordering": [
+    "left",
+    "right"
+  ],
+  "normalization": "wrist_index_pinky_center_max_scale",
+  "missing_hand_fill": "zeros",
+  "target_sample_fps": 10.0,
+  "classes": [
+    "HELLO",
+    "THANK YOU",
+    "YES",
+    "NO",
+    "HELP"
+  ],
+  "num_classes": 5,
+  "labels": [
+    "HELLO",
+    "THANK YOU",
+    "YES",
+    "NO",
+    "HELP"
+  ],
+  "label_map": {
+    "HELLO": 0,
+    "THANK YOU": 1,
+    "YES": 2,
+    "NO": 3,
+    "HELP": 4
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "classes": [
+    "HELLO",
+    "THANK YOU",
+    "YES",
+    "NO",
+    "HELP"
+  ],
+  "counts_by_class": {
+    "HELLO": 270,
+    "HELP": 263,
+    "NO": 285,
+    "THANK YOU": 259,
+    "YES": 255
+  },
+  "imbalance_ratio": 1.1176470588235294,
+  "label_map": {
+    "HELLO": 0,
+    "HELP": 4,
+    "NO": 3,
+    "THANK YOU": 1,
+    "YES": 2
+  },
+  "n_samples": 1332,
+  "shape": [
+    1332,
+    126
+  ],
+  "splits": {
+    "test": 242,
+    "train": 813,
+    "val": 277
+  },
+  "video_overlap": 0,
+  "videos_per_split": {
+    "test": 5,
+    "train": 15,
+    "val": 5
+  }
+}

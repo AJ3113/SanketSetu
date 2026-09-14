@@ -1,0 +1,11 @@
+'use client'
+import { FormEvent, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import { authClient } from '@/lib/auth-client'
+
+export default function SignInPage() {
+  const router = useRouter(); const [mode, setMode] = useState<'sign-in'|'sign-up'>('sign-in'); const [email, setEmail] = useState(''); const [password, setPassword] = useState(''); const [name, setName] = useState(''); const [error, setError] = useState(''); const [loading, setLoading] = useState(false)
+  async function submit(event: FormEvent) { event.preventDefault(); setLoading(true); setError(''); const result = mode === 'sign-in' ? await authClient.signIn.email({ email, password }) : await authClient.signUp.email({ email, password, name }); setLoading(false); if (result.error) { setError('We could not complete that login. Check your details and try again.'); return } router.push('/'); router.refresh() }
+  return <main className="auth-shell"><div className="auth-card"><a className="brand" href="/"><Image src="/logo.png" alt="SanketSetu Logo" width={55} height={30} className="brand-mark" priority />SanketSetu</a><p className="kicker">YOUR SIGN LANGUAGE SIDEKICK</p><h1>{mode === 'sign-in' ? 'Welcome back.' : 'Welcome in.'}</h1><p className="auth-sub">Save your practice progress and make every conversation more accessible.</p><form onSubmit={submit}>{mode === 'sign-up' && <input required placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} /> }<input required type="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} /><input required minLength={8} type="password" placeholder="Password (8+ characters)" value={password} onChange={(e) => setPassword(e.target.value)} /><button className="primary-button" disabled={loading}>{loading ? 'Opening...' : mode === 'sign-in' ? 'Log in' : 'Create account'} <span>↗</span></button>{error && <p className="form-error">{error}</p>}</form><button className="text-button" onClick={() => setMode(mode === 'sign-in' ? 'sign-up' : 'sign-in')}>{mode === 'sign-in' ? 'New here? Create an account' : 'Already have an account? Log in'}</button><a className="help-link" href="/help">Need help?</a></div></main>
+}
